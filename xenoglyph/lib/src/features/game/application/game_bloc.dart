@@ -18,12 +18,9 @@ class GameBloc extends Bloc<GameEvent, GameState> {
   final GameRepository gameRepository;
   final SettingsCubit settingsCubit;
 
-  // progression
   final StatsCubit statsCubit;
   final AchievementsCubit achievementsCubit;
   final LoreCubit loreCubit;
-
-  // sound
   final SoundService sound;
 
   Timer? _ticker;
@@ -48,7 +45,7 @@ class GameBloc extends Bloc<GameEvent, GameState> {
 
   Future<void> _onStarted(GameStarted e, Emitter<GameState> emit) async {
     _cancelTimer();
-    await statsCubit.trackGameStarted(); // фиксируем старт новой игры
+    await statsCubit.trackGameStarted();
 
     final timerOn =
         settingsCubit.state.timerEnabled && e.mode == GameMode.timed;
@@ -78,6 +75,8 @@ class GameBloc extends Bloc<GameEvent, GameState> {
   void _onNextRound(NextRoundRequested e, Emitter<GameState> emit) {
     if (state.round == null) return;
 
+    _cancelTimer();
+
     final timerOn =
         settingsCubit.state.timerEnabled && state.mode == GameMode.timed;
     final next = gameRepository.nextRound(
@@ -104,6 +103,8 @@ class GameBloc extends Bloc<GameEvent, GameState> {
         state.status != RoundStatus.playing)
       return;
 
+    _cancelTimer();
+
     final correct = e.answer == state.round!.decodedWord;
     final newStreak = correct ? state.streak + 1 : 0;
     final addScore = correct ? 100 + (newStreak * 10) : 0;
@@ -118,7 +119,6 @@ class GameBloc extends Bloc<GameEvent, GameState> {
       ),
     );
 
-    // SFX
     if (_soundOn) {
       if (correct) {
         sound.playCorrect();
@@ -127,9 +127,6 @@ class GameBloc extends Bloc<GameEvent, GameState> {
       }
     }
 
-    _cancelTimer();
-
-    // обновляем статистику/ачивки/лор
     statsCubit
         .trackRound(
           timeMs: timeMs,
@@ -149,7 +146,6 @@ class GameBloc extends Bloc<GameEvent, GameState> {
           loreCubit.checkUnlocksByTotals(totalCorrect: totals.totalCorrect);
         });
 
-    // переход
     Future.delayed(const Duration(milliseconds: 450), () {
       if (isClosed) return;
       if (!correct && state.mode == GameMode.suddenDeath) {
@@ -170,13 +166,11 @@ class GameBloc extends Bloc<GameEvent, GameState> {
 
     final t = (state.timeLeft ?? 0) - 1;
 
-    // SFX тик за 3/2/1 секунду до конца
     if (_soundOn && t > 0 && t <= 3) {
       sound.playTick();
     }
 
     if (t <= 0) {
-      // время истекло — неверно
       emit(
         state.copyWith(
           status: RoundStatus.incorrect,
