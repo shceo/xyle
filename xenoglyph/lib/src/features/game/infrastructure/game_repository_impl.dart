@@ -14,7 +14,7 @@ class GameRepositoryImpl implements GameRepository {
       Difficulty.hard   => 5,
     };
 
-    // Pick unique symbols for mapping
+    
     final symbols = kAlienSymbols.toList()..shuffle(random);
     final letters = _pickUniqueLetters(lenByDiff);
 
@@ -24,7 +24,7 @@ class GameRepositoryImpl implements GameRepository {
     }
     final mapping = GlyphMapping(symbolToLetter);
 
-    // Build decoded word using only the mapped letters
+    
     final wordLength = _randIn(3, 6);
     final decoded = List.generate(
       wordLength,
@@ -33,7 +33,7 @@ class GameRepositoryImpl implements GameRepository {
 
     final encrypted = mapping.encrypt(decoded);
 
-    // Options: 1 correct + 3 plausible distractors
+    
     final opts = <String>{decoded};
     while (opts.length < 4) {
       opts.add(_mutate(decoded, letters));
@@ -62,7 +62,7 @@ class GameRepositoryImpl implements GameRepository {
   static String _mutate(String s, List<String> allowed) {
     if (s.isEmpty) return s;
     final chars = s.split('');
-    // change one random position to another allowed letter
+    
     final idx = random.nextInt(chars.length);
     String replacement;
     do {
@@ -70,7 +70,7 @@ class GameRepositoryImpl implements GameRepository {
     } while (replacement == chars[idx]);
     chars[idx] = replacement;
 
-    // maybe swap two positions for extra noise
+    
     if (chars.length > 2 && random.nextBool()) {
       final i = random.nextInt(chars.length);
       var j = random.nextInt(chars.length);

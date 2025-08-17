@@ -13,7 +13,7 @@ class GamePage extends StatefulWidget {
 }
 
 class _GamePageState extends State<GamePage> with WidgetsBindingObserver {
-  late GameBloc _bloc; // <— держим ссылку
+  late GameBloc _bloc; 
   bool _started = false;
 
   @override
@@ -22,11 +22,11 @@ class _GamePageState extends State<GamePage> with WidgetsBindingObserver {
     WidgetsBinding.instance.addObserver(this);
   }
 
-  // Берём Bloc и запускаем игру ОДИН раз, тут уже безопасно пользоваться контекстом
+  
   @override
   void didChangeDependencies() {
     super.didChangeDependencies();
-    _bloc = context.read<GameBloc>(); // safe здесь
+    _bloc = context.read<GameBloc>(); 
     if (!_started) {
       final settings = context.read<SettingsCubit>().state;
       _bloc.add(
@@ -39,7 +39,7 @@ class _GamePageState extends State<GamePage> with WidgetsBindingObserver {
     }
   }
 
-  // Пауза при сворачивании
+  
   @override
   void didChangeAppLifecycleState(AppLifecycleState state) {
     if (state != AppLifecycleState.resumed) _forcePause();
@@ -48,22 +48,22 @@ class _GamePageState extends State<GamePage> with WidgetsBindingObserver {
   @override
   void dispose() {
     WidgetsBinding.instance.removeObserver(this);
-    _forcePause(); // <— без context, только через _bloc
+    _forcePause(); 
     super.dispose();
   }
 
   Future<bool> _onWillPop() async {
-    _forcePause(); // стопаем перед выходом
+    _forcePause(); 
     return true;
   }
 
   void _forcePause() {
-    // не трогаем context тут!
+    
     if (!_bloc.state.isPaused) {
       _bloc.add(GamePausedToggled());
     }
-    // Если есть аудио — останавливаем здесь
-    // SoundFx.instance.stopAll();
+    
+    
   }
 
   @override
@@ -110,7 +110,7 @@ class _GamePageState extends State<GamePage> with WidgetsBindingObserver {
 
                     return Column(
                       children: [
-                        // ---------- HEADER ----------
+                        
                         Padding(
                           padding: const EdgeInsets.fromLTRB(12, 4, 12, 10),
                           child: Row(
@@ -149,7 +149,7 @@ class _GamePageState extends State<GamePage> with WidgetsBindingObserver {
                                 ),
                               ),
                               const Spacer(),
-                              // SCORE
+                              
                               ShaderMask(
                                 shaderCallback: (r) => LinearGradient(
                                   colors: [scheme.secondary, scheme.primary],
@@ -163,14 +163,14 @@ class _GamePageState extends State<GamePage> with WidgetsBindingObserver {
                                 ),
                               ),
                               const SizedBox(width: 10),
-                              // TIMER
+                              
                               if (state.timeLeft != null)
                                 _NeonChip(
                                   label: '${state.timeLeft}s',
                                   glow: scheme.primary,
                                 ),
                               const SizedBox(width: 8),
-                              // PAUSE
+                              
                               _NeonCircleButton(
                                 icon: state.isPaused
                                     ? Icons.play_arrow_rounded
@@ -190,7 +190,7 @@ class _GamePageState extends State<GamePage> with WidgetsBindingObserver {
                             to: scheme.primary.withOpacity(0.6),
                           ),
                         ),
-                        // ---------- BODY ----------
+                        
                         Expanded(
                           child: round == null
                               ? const Center(child: CircularProgressIndicator())
@@ -205,7 +205,7 @@ class _GamePageState extends State<GamePage> with WidgetsBindingObserver {
                                     ),
                                     child: Column(
                                       children: [
-                                        // Encrypted word
+                                        
                                         Expanded(
                                           flex: 3,
                                           child: Center(
@@ -257,7 +257,7 @@ class _GamePageState extends State<GamePage> with WidgetsBindingObserver {
                                           ),
                                         ),
 
-                                        // mapping chips
+                                        
                                         Wrap(
                                           alignment: WrapAlignment.center,
                                           spacing: 8,
@@ -277,7 +277,7 @@ class _GamePageState extends State<GamePage> with WidgetsBindingObserver {
                                         ),
                                         const SizedBox(height: 18),
 
-                                        // Answer options
+                                        
                                         Expanded(
                                           flex: 4,
                                           child: LayoutBuilder(
@@ -333,12 +333,12 @@ class _GamePageState extends State<GamePage> with WidgetsBindingObserver {
                                 ),
                         ),
 
-                        // ---------- FOOTER ----------
+                        
                         Container(
                           padding: const EdgeInsets.fromLTRB(16, 8, 16, 14),
                           child: Row(
                             children: [
-                              // Streak
+                              
                               ShaderMask(
                                 shaderCallback: (r) => LinearGradient(
                                   colors: [scheme.secondary, scheme.primary],
@@ -352,7 +352,7 @@ class _GamePageState extends State<GamePage> with WidgetsBindingObserver {
                                 ),
                               ),
                               const Spacer(),
-                              // MODE
+                              
                               _ModeDropdown(
                                 value: state.mode,
                                 glow: scheme.secondary,
@@ -367,7 +367,7 @@ class _GamePageState extends State<GamePage> with WidgetsBindingObserver {
                                 },
                               ),
                               const SizedBox(width: 10),
-                              // DIFFICULTY
+                              
                               _DifficultyDropdown(
                                 value: state.difficulty,
                                 glow: scheme.primary,
@@ -405,7 +405,7 @@ class _GamePageState extends State<GamePage> with WidgetsBindingObserver {
   }
 }
 
-/* ========================= Neon widgets ========================= */
+
 
 class _NeonCircleButton extends StatefulWidget {
   final IconData icon;

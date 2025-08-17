@@ -8,7 +8,7 @@ Future<void> main() async {
 
   final prefs = await SharedPreferences.getInstance();
 
-  // Инициализируем звуковой сервис
+  
   final sound = SoundService();
   await sound.init();
 

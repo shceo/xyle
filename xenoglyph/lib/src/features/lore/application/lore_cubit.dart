@@ -22,7 +22,7 @@ class LoreCubit extends Cubit<LoreState> {
   LoreCubit(this.repo)
       : super(LoreState(allLore: builtInLore, unlockedIds: repo.readUnlockedLore(), quizPassedIds: repo.readQuizPassed()));
 
-  // вызывать из GameBloc/Stats при росте totalCorrect
+  
   Future<void> checkUnlocksByTotals({required int totalCorrect}) async {
     final unlocked = {...state.unlockedIds};
     for (final e in state.allLore) {

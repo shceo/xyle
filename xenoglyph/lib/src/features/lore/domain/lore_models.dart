@@ -2,7 +2,7 @@ class LoreEntry {
   final String id;
   final String title;
   final String content;
-  final int unlockAtCorrectTotal; // откроется при достижении totalCorrect >= N
+  final int unlockAtCorrectTotal; 
   const LoreEntry({required this.id, required this.title, required this.content, required this.unlockAtCorrectTotal});
 }
 
@@ -32,7 +32,7 @@ class QuizQuestion {
   final String question;
   final List<String> options;
   final int correctIndex;
-  final String loreId; // к какой статье относится
+  final String loreId; 
   const QuizQuestion({
     required this.id,
     required this.question,

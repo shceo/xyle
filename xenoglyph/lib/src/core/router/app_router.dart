@@ -4,7 +4,7 @@ import 'package:xenoglyph/src/features/lore/presentation/quiz_page.dart';
 import 'package:xenoglyph/src/features/menu/presentation/pages/main_menu_page.dart';
 import 'package:xenoglyph/src/features/settings/presentation/pages/settings_page.dart';
 
-// New pages
+
 import 'package:xenoglyph/src/features/stats/presentation/pages/statistics_page.dart';
 import 'package:xenoglyph/src/features/achievements/presentation/pages/achievements_page.dart';
 import 'package:xenoglyph/src/features/lore/presentation/pages/lore_page.dart';
@@ -16,7 +16,7 @@ class AppRouter {
   static const String game = '/game';
   static const String settings = '/settings';
 
-  // New routes
+  
   static const String stats = '/stats';
   static const String achievements = '/achievements';
   static const String lore = '/lore';
@@ -33,7 +33,7 @@ class AppRouter {
       case AppRouter.settings:
         return MaterialPageRoute(builder: (_) => const SettingsPage());
 
-      // New routes
+      
       case AppRouter.stats:
         return MaterialPageRoute(builder: (_) => const StatisticsPage());
       case AppRouter.achievements:

@@ -13,7 +13,7 @@ class _QuizPageState extends State<QuizPage> with SingleTickerProviderStateMixin
   int _index = 0;
   int _score = 0;
 
-  int? _pressed;          // выбранный вариант
+  int? _pressed;          
   bool _showResult = false;
 
   late final AnimationController _fadeCtrl =
@@ -63,7 +63,7 @@ class _QuizPageState extends State<QuizPage> with SingleTickerProviderStateMixin
                   ? _EmptyQuiz(scheme: scheme)
                   : Column(
                       children: [
-                        // Header
+                        
                         Padding(
                           padding: const EdgeInsets.fromLTRB(12, 4, 12, 10),
                           child: Row(
@@ -103,7 +103,7 @@ class _QuizPageState extends State<QuizPage> with SingleTickerProviderStateMixin
                           ),
                         ),
 
-                        // Content
+                        
                         Expanded(
                           child: FadeTransition(
                             opacity: _fade,
@@ -151,7 +151,7 @@ class _QuizPageState extends State<QuizPage> with SingleTickerProviderStateMixin
       if (!mounted) return;
       final next = _index + 1;
       if (next >= deck.length) {
-        // отметить пройденные лоры
+        
         final loreIds = deck.map((e) => e.loreId).toSet();
         for (final id in loreIds) {
           context.read<LoreCubit>().markQuizPassed(id);
@@ -214,7 +214,7 @@ class _QuizPageState extends State<QuizPage> with SingleTickerProviderStateMixin
   }
 }
 
-/* ========================= Question view ========================= */
+
 
 class _QuestionView extends StatelessWidget {
   final int index;
@@ -265,17 +265,17 @@ class _QuestionView extends StatelessWidget {
         Text(question.question, style: titleStyle, textAlign: TextAlign.center),
         const SizedBox(height: 18),
 
-        // варианты
+        
         ...List.generate(question.options.length, (i) {
           final isCorrect = i == question.correctIndex;
           final isPressed = pressed == i;
           final Color glow;
           if (showResult && isCorrect) {
-            glow = const Color(0xFF2EE6A6); // зелёный
+            glow = const Color(0xFF2EE6A6); 
           } else if (showResult && isPressed && !isCorrect) {
-            glow = const Color(0xFFFF4D8D); // розово-красный
+            glow = const Color(0xFFFF4D8D); 
           } else {
-            glow = scheme.secondary; // обычный циан
+            glow = scheme.secondary; 
           }
 
           return Padding(
@@ -291,7 +291,7 @@ class _QuestionView extends StatelessWidget {
 
         const Spacer(),
 
-        // нижняя плашка со счётом
+        
         Opacity(
           opacity: 0.9,
           child: ShaderMask(
@@ -312,7 +312,7 @@ class _QuestionView extends StatelessWidget {
   }
 }
 
-/* ========================= Neon widgets ========================= */
+
 
 class _NeonOption extends StatefulWidget {
   final String label;
@@ -536,7 +536,7 @@ class _NeonActionButtonState extends State<_NeonActionButton> {
   }
 }
 
-/* ========================= Empty state ========================= */
+
 
 class _EmptyQuiz extends StatelessWidget {
   final ColorScheme scheme;
@@ -546,7 +546,7 @@ class _EmptyQuiz extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        // шапка без текста по центру (как на остальных страницах)
+        
         Padding(
           padding: const EdgeInsets.fromLTRB(12, 4, 12, 10),
           child: Row(

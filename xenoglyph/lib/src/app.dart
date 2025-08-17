@@ -5,28 +5,28 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'core/router/app_router.dart';
 import 'core/theme/app_theme.dart';
 
-// Settings
+
 import 'features/settings/infrastructure/settings_repository.dart';
 import 'features/settings/application/settings_cubit.dart';
 
-// Game
+
 import 'features/game/domain/game_repository.dart';
 import 'features/game/infrastructure/game_repository_impl.dart';
 import 'features/game/application/game_bloc.dart';
 
-// Stats
+
 import 'features/stats/infrastructure/stats_repository.dart';
 import 'features/stats/application/stats_cubit.dart';
 
-// Achievements
+
 import 'features/achievements/infrastructure/achievements_repository.dart';
 import 'features/achievements/application/achievements_cubit.dart';
 
-// Lore
+
 import 'features/lore/infrastructure/lore_repository.dart';
 import 'features/lore/application/lore_cubit.dart';
 
-// Sound
+
 import 'core/sound/sound_service.dart';
 
 class XenoGlyphApp extends StatelessWidget {
@@ -52,7 +52,7 @@ class XenoGlyphApp extends StatelessWidget {
         RepositoryProvider<AchievementsRepository>.value(value: achievesRepo),
         RepositoryProvider<LoreRepository>.value(value: loreRepo),
 
-        // пробрасываем SoundService как репозиторий (синглтон)
+        
         RepositoryProvider<SoundService>.value(value: sound),
       ],
       child: MultiBlocProvider(

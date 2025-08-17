@@ -46,7 +46,7 @@ class _HowToPlayPageState extends State<HowToPlayPage>
         ),
         child: Stack(
           children: [
-            // ambient glow
+            
             Positioned(
               top: -120,
               left: -80,
@@ -67,7 +67,7 @@ class _HowToPlayPageState extends State<HowToPlayPage>
             SafeArea(
               child: Column(
                 children: [
-                  // header
+                  
                   Padding(
                     padding: const EdgeInsets.fromLTRB(12, 4, 12, 10),
                     child: Row(
@@ -112,7 +112,7 @@ class _HowToPlayPageState extends State<HowToPlayPage>
                     ),
                   ),
 
-                  // thin glow line
+                  
                   Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 16),
                     child: _GlowDivider(
@@ -121,7 +121,7 @@ class _HowToPlayPageState extends State<HowToPlayPage>
                     ),
                   ),
 
-                  // content
+                  
                   Expanded(
                     child: FadeTransition(
                       opacity: _fade,
@@ -303,7 +303,7 @@ class _HowToPlayPageState extends State<HowToPlayPage>
   }
 }
 
-/* ========================= Sections & bullets ========================= */
+
 
 class _Section extends StatelessWidget {
   final String title;
@@ -388,7 +388,7 @@ class _BulletLine extends StatelessWidget {
     return Row(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        // glowing dot
+        
         Container(
           width: 8,
           height: 8,
@@ -399,7 +399,7 @@ class _BulletLine extends StatelessWidget {
             boxShadow: [BoxShadow(color: dot.withOpacity(0.8), blurRadius: 10)],
           ),
         ),
-        // gradient label + rest text
+        
         Expanded(
           child: RichText(
             text: TextSpan(
@@ -428,7 +428,7 @@ class _BulletLine extends StatelessWidget {
   }
 }
 
-/* ========================= Shared neon widgets ========================= */
+
 
 class _NeonCircleButton extends StatefulWidget {
   final IconData icon;
