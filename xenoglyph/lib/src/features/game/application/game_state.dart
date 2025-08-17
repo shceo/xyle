@@ -36,6 +36,8 @@ class GameState extends Equatable {
         status = RoundStatus.playing,
         lastChoiceCorrect = null;
 
+  static const _noTimeLeft = Object();
+
   GameState copyWith({
     GameMode? mode,
     Difficulty? difficulty,
@@ -43,7 +45,7 @@ class GameState extends Equatable {
     int? streak,
     bool? isPaused,
     GameRound? round,
-    int? timeLeft,
+    Object? timeLeft = _noTimeLeft,
     RoundStatus? status,
     bool? lastChoiceCorrect,
   }) {
@@ -54,7 +56,7 @@ class GameState extends Equatable {
       streak: streak ?? this.streak,
       isPaused: isPaused ?? this.isPaused,
       round: round ?? this.round,
-      timeLeft: timeLeft ?? this.timeLeft,
+      timeLeft: identical(timeLeft, _noTimeLeft) ? this.timeLeft : timeLeft as int?,
       status: status ?? this.status,
       lastChoiceCorrect: lastChoiceCorrect ?? this.lastChoiceCorrect,
     );
