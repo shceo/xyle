@@ -13,7 +13,7 @@ class StatsCubit extends Cubit<StatsModel> {
     emit(repo.read());
   }
 
-  // начало новой игры
+  
   Future<StatsModel> trackGameStarted() async {
     final next = state.copyWith(totalGames: state.totalGames + 1);
     emit(next);
@@ -21,8 +21,8 @@ class StatsCubit extends Cubit<StatsModel> {
     return next;
   }
 
-  // завершение одного раунда
-  // timeMs - фактическое время ответа (или дожидание таймера), scoreDelta - добавленные очки
+  
+  
   Future<StatsModel> trackRound({
     required int timeMs,
     required bool correct,

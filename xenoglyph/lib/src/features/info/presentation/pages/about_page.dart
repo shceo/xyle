@@ -20,7 +20,7 @@ class AboutPage extends StatelessWidget {
         ),
         child: Stack(
           children: [
-            // лёгкое свечение в углах, как на мокапе
+            
             Positioned(
               top: -120,
               left: -80,
@@ -41,7 +41,7 @@ class AboutPage extends StatelessWidget {
             SafeArea(
               child: Column(
                 children: [
-                  // HEADER: back + centered ABOUT
+                  
                   Padding(
                     padding: const EdgeInsets.fromLTRB(12, 4, 12, 10),
                     child: Row(
@@ -76,12 +76,12 @@ class AboutPage extends StatelessWidget {
                           ),
                         ),
                         const Spacer(),
-                        const SizedBox(width: 48), // симметрия с кнопкой назад
+                        const SizedBox(width: 48), 
                       ],
                     ),
                   ),
 
-                  // тонкая светящаяся линия под шапкой
+                  
                   Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 16),
                     child: _GlowDivider(
@@ -90,7 +90,7 @@ class AboutPage extends StatelessWidget {
                     ),
                   ),
 
-                  // CONTENT
+                  
                   Expanded(
                     child: Center(
                       child: SingleChildScrollView(
@@ -146,7 +146,7 @@ class AboutPage extends StatelessWidget {
                     ),
                   ),
 
-                  // нижняя светящаяся линия
+                  
                   Padding(
                     padding: const EdgeInsets.fromLTRB(24, 0, 24, 14),
                     child: _GlowDivider(
@@ -164,7 +164,7 @@ class AboutPage extends StatelessWidget {
   }
 }
 
-/* ========================= Neon pieces ========================= */
+
 
 class _NeonBackButton extends StatefulWidget {
   final Color color;
@@ -238,7 +238,7 @@ class _NeonBigTitle extends StatelessWidget {
           fontSize: 54,
           fontWeight: FontWeight.w900,
           letterSpacing: 0.8,
-          color: Colors.white, // masked
+          color: Colors.white, 
           shadows: [
             Shadow(blurRadius: 26, color: Color(0xAA00E5FF)),
             Shadow(blurRadius: 36, color: Color(0x887C4DFF)),

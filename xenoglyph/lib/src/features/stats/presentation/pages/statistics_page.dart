@@ -25,7 +25,7 @@ class StatisticsPage extends StatelessWidget {
         ),
         child: Stack(
           children: [
-            // ambient glow
+            
             Positioned(
               top: -120,
               left: -80,
@@ -46,7 +46,7 @@ class StatisticsPage extends StatelessWidget {
             SafeArea(
               child: Column(
                 children: [
-                  // header
+                  
                   Padding(
                     padding: const EdgeInsets.fromLTRB(12, 4, 12, 10),
                     child: Row(
@@ -91,7 +91,7 @@ class StatisticsPage extends StatelessWidget {
                     ),
                   ),
 
-                  // subtle glowing line
+                  
                   Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 16),
                     child: _GlowDivider(
@@ -100,7 +100,7 @@ class StatisticsPage extends StatelessWidget {
                     ),
                   ),
 
-                  // content
+                  
                   Expanded(
                     child: ListView(
                       padding: const EdgeInsets.fromLTRB(20, 22, 20, 22),
@@ -251,7 +251,7 @@ class StatisticsPage extends StatelessWidget {
   }
 }
 
-/* ========================= Widgets ========================= */
+
 
 class _StatTile extends StatelessWidget {
   final IconData icon;
@@ -546,7 +546,7 @@ class _NeonActionButtonState extends State<_NeonActionButton> {
                 maxLines: 1,
                 overflow: TextOverflow.ellipsis,
                 style: const TextStyle(
-                  color: Colors.white, // нужен для ShaderMask
+                  color: Colors.white, 
                   fontWeight: FontWeight.w700,
                   letterSpacing: 0.8,
                 ),

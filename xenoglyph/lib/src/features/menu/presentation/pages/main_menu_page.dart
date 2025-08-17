@@ -22,7 +22,7 @@ class MainMenuPage extends StatelessWidget {
         child: SafeArea(
           child: Stack(
             children: [
-              // Top icons: Settings (left) and About (right)
+              
               Positioned(
                 left: 12,
                 right: 12,
@@ -46,7 +46,7 @@ class MainMenuPage extends StatelessWidget {
                 ),
               ),
 
-              // Center content
+              
               Center(
                 child: SingleChildScrollView(
                   padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 24),
@@ -59,8 +59,8 @@ class MainMenuPage extends StatelessWidget {
                           'XenoGlyph',
                           gradient: LinearGradient(
                             colors: [
-                              scheme.secondary, // cyan
-                              scheme.primary,   // violet
+                              scheme.secondary, 
+                              scheme.primary,   
                             ],
                           ),
                         ),
@@ -130,7 +130,7 @@ class MainMenuPage extends StatelessWidget {
   }
 }
 
-/* ========================= NEON WIDGETS ========================= */
+
 
 class _NeonTitle extends StatelessWidget {
   final String text;
@@ -148,7 +148,7 @@ class _NeonTitle extends StatelessWidget {
           fontSize: 44,
           fontWeight: FontWeight.w900,
           letterSpacing: 0.8,
-          color: Colors.white, // masked by ShaderMask
+          color: Colors.white, 
           shadows: [
             Shadow(blurRadius: 16, color: Color(0xAA00E5FF), offset: Offset(0, 0)),
             Shadow(blurRadius: 24, color: Color(0x887C4DFF), offset: Offset(0, 0)),

@@ -13,7 +13,7 @@ class SettingsPage extends StatelessWidget {
     final bgBottom = const Color(0xFF0F1320);
 
     return Scaffold(
-      // Неоновый градиент как на главном экране
+      
       body: Container(
         decoration: BoxDecoration(
           gradient: LinearGradient(
@@ -25,7 +25,7 @@ class SettingsPage extends StatelessWidget {
         child: SafeArea(
           child: Column(
             children: [
-              // Верхняя панель в неоновом стиле
+              
               Padding(
                 padding: const EdgeInsets.fromLTRB(8, 4, 8, 8),
                 child: Row(
@@ -36,7 +36,7 @@ class SettingsPage extends StatelessWidget {
                       onTap: () => Navigator.pop(context),
                     ),
                     const Spacer(),
-                    // Неоновый заголовок
+                    
                     ShaderMask(
                       shaderCallback: (rect) => LinearGradient(
                         colors: [scheme.secondary, scheme.primary],
@@ -56,12 +56,12 @@ class SettingsPage extends StatelessWidget {
                       ),
                     ),
                     const Spacer(),
-                    const SizedBox(width: 44), // симметрия с back-кнопкой
+                    const SizedBox(width: 44), 
                   ],
                 ),
               ),
 
-              // Контент
+              
               Expanded(
                 child: ListView(
                   padding: const EdgeInsets.all(16),
@@ -97,8 +97,8 @@ class SettingsPage extends StatelessWidget {
                             value: s.timerEnabled,
                             onChanged: (v) =>
                                 context.read<SettingsCubit>().toggleTimer(v),
-                            from: scheme.primary, // violet
-                            to: scheme.secondary, // cyan
+                            from: scheme.primary, 
+                            to: scheme.secondary, 
                           ),
                         ],
                       ),
@@ -133,7 +133,7 @@ class SettingsPage extends StatelessWidget {
                     _NeonDivider(color: scheme.secondary.withOpacity(0.35)),
                     const SizedBox(height: 12),
 
-                    // Инфо-блок
+                    
                     _InfoLine(
                       label: 'Version',
                       value: s.appVersion,
@@ -158,7 +158,7 @@ class SettingsPage extends StatelessWidget {
   }
 }
 
-/* ========================= WIDGETS ========================= */
+
 
 class _NeonRoundIcon extends StatefulWidget {
   final IconData icon;
@@ -251,8 +251,8 @@ class _NeonCard extends StatelessWidget {
 class _NeonToggle extends StatefulWidget {
   final bool value;
   final ValueChanged<bool> onChanged;
-  final Color from; // gradient start
-  final Color to; // gradient end
+  final Color from; 
+  final Color to; 
 
   const _NeonToggle({
     required this.value,

@@ -34,7 +34,7 @@ class AchievementsCubit extends Cubit<AchievementsState> {
     await repo.writeUnlocked(set);
   }
 
-  // вызывается из GameBloc по каждому раунду
+  
   Future<void> checkOnRound({
     required bool correct,
     required int streak,
@@ -50,14 +50,14 @@ class AchievementsCubit extends Cubit<AchievementsState> {
 
     if (totalScore >= 1000) await _unlock(AchievementId.score1000);
 
-    // Трекер для "10 правильных на Hard за одну сессию"
+    
     if (difficulty == Difficulty.hard) {
       final current = repo.readHardSessionCorrect();
       final next = correct ? current + 1 : current;
       await repo.writeHardSessionCorrect(next);
       if (next >= 10) await _unlock(AchievementId.hard10Correct);
     } else {
-      // в других сложностях сбрасываем прогресс "hard-сессии"
+      
       await repo.resetHardSessionCorrect();
     }
   }

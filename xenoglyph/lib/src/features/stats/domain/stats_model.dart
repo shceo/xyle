@@ -3,7 +3,7 @@ class StatsModel {
   final int totalRounds;
   final int totalCorrect;
   final int bestStreak;
-  final int totalTimeMs; // суммарное время за все раунды
+  final int totalTimeMs; 
   final int totalScore;
 
   const StatsModel({

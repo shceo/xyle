@@ -26,7 +26,7 @@ class AchievementsPage extends StatelessWidget {
         ),
         child: Stack(
           children: [
-            // ambient glow
+            
             Positioned(
               top: -120,
               left: -80,
@@ -47,7 +47,7 @@ class AchievementsPage extends StatelessWidget {
             SafeArea(
               child: Column(
                 children: [
-                  // Header: back, title, reset
+                  
                   Padding(
                     padding: const EdgeInsets.fromLTRB(12, 4, 12, 10),
                     child: Row(
@@ -92,7 +92,7 @@ class AchievementsPage extends StatelessWidget {
                     ),
                   ),
 
-                  // thin glow line
+                  
                   Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 16),
                     child: _GlowDivider(
@@ -101,7 +101,7 @@ class AchievementsPage extends StatelessWidget {
                     ),
                   ),
 
-                  // GRID
+                  
                   Expanded(
                     child: LayoutBuilder(
                       builder: (context, constraints) {
@@ -231,7 +231,7 @@ class AchievementsPage extends StatelessWidget {
   }
 }
 
-/* ========================= TILE ========================= */
+
 
 class _AchievementCard extends StatelessWidget {
   final Achievement a;
@@ -286,7 +286,7 @@ class _AchievementCard extends StatelessWidget {
                 ),
                 const SizedBox(height: 10),
 
-                // Title with neon gradient
+                
                 ShaderMask(
                   shaderCallback: (rect) => titleGradient.createShader(rect),
                   child: Text(
@@ -307,7 +307,7 @@ class _AchievementCard extends StatelessWidget {
                 ),
                 const SizedBox(height: 8),
 
-                // Description
+                
                 Flexible(
                   child: Center(
                     child: Text(
@@ -326,7 +326,7 @@ class _AchievementCard extends StatelessWidget {
 
                 const SizedBox(height: 10),
 
-                // Unlocked date (optional)
+                
                 if (a.unlocked && a.unlockedAt != null)
                   Opacity(
                     opacity: 0.9,
@@ -357,7 +357,7 @@ class _AchievementCard extends StatelessWidget {
       '${d.year}-${_two(d.month)}-${_two(d.day)} ${_two(d.hour)}:${_two(d.minute)}';
 }
 
-/* ========================= SHARED NEON WIDGETS ========================= */
+
 
 class _NeonCircleButton extends StatefulWidget {
   final IconData icon;

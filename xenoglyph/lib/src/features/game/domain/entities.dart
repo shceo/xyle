@@ -1,7 +1,7 @@
 import '../../../core/constants.dart';
 
 class GlyphMapping {
-  final Map<String, String> symbolToLetter; // e.g. '▲' -> 'A'
+  final Map<String, String> symbolToLetter; 
   const GlyphMapping(this.symbolToLetter);
 
   String encrypt(String decoded) {

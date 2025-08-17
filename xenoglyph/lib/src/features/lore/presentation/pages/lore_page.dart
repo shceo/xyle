@@ -27,7 +27,7 @@ class LorePage extends StatelessWidget {
         ),
         child: Stack(
           children: [
-            // подсветка фона
+            
             Positioned(
               top: -120,
               left: -80,
@@ -48,7 +48,7 @@ class LorePage extends StatelessWidget {
             SafeArea(
               child: Column(
                 children: [
-                  // Шапка
+                  
                   Padding(
                     padding: const EdgeInsets.fromLTRB(12, 4, 12, 10),
                     child: Row(
@@ -93,7 +93,7 @@ class LorePage extends StatelessWidget {
                       ],
                     ),
                   ),
-                  // линия свечения
+                  
                   Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 16),
                     child: _GlowDivider(
@@ -102,7 +102,7 @@ class LorePage extends StatelessWidget {
                     ),
                   ),
 
-                  // Контент
+                  
                   Expanded(
                     child: ListView.separated(
                       padding: const EdgeInsets.fromLTRB(20, 18, 20, 24),
@@ -112,7 +112,7 @@ class LorePage extends StatelessWidget {
                         final e = s.allLore[i];
                         final unlocked = s.isUnlocked(e.id);
                         final passed = s.quizPassed(e.id);
-                        // цвет свечения: разблокирован — циановый, иначе — фиолет с меньшей яркостью
+                        
                         final glow = unlocked
                             ? scheme.secondary
                             : scheme.primary.withOpacity(0.50);
@@ -136,7 +136,7 @@ class LorePage extends StatelessWidget {
   }
 }
 
-/* ========================= LORE TILE ========================= */
+
 
 class _LoreTile extends StatelessWidget {
   final LoreEntry entry;
@@ -281,7 +281,7 @@ class _LoreTile extends StatelessWidget {
   }
 }
 
-/* ========================= SHARED NEON WIDGETS ========================= */
+
 
 class _NeonCircleButton extends StatefulWidget {
   final IconData icon;

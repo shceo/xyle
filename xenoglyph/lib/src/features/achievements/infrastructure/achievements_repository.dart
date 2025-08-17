@@ -2,8 +2,8 @@ import 'package:shared_preferences/shared_preferences.dart';
 import '../domain/achievement.dart';
 
 class AchievementsRepository {
-  static const _kUnlocked = 'achievements_unlocked_ids'; // List<String> by enum name
-  static const _kHardSessionCorrect = 'achievements_hard_session_correct'; // вспомогательный прогресс
+  static const _kUnlocked = 'achievements_unlocked_ids'; 
+  static const _kHardSessionCorrect = 'achievements_hard_session_correct'; 
 
   final SharedPreferences prefs;
   AchievementsRepository(this.prefs);
